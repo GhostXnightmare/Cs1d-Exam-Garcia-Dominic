@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+  <link rel="stylesheet" href="gallery view.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+  <link rel="stylesheet" type="text/css" <body9 />
+  <div class="topnav">
+    <a class="active" href="Travel Memories.html">Home</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+    <a href="About.html">About</a>
+  </div>
+
+  <link
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css?family=Raleway:200"
+    rel="stylesheet"
+  />
+
+  <div
+    class="container"
+    ng-class="{'no-scroll': selected.length}"
+    ng-app="app"
+    ng-controller="mainCtrl"
+  >
+    <div class="page">
+      <div class="grid">
+        <div class="grid-item" ng-repeat="item in boxes">
+          <box
+            class="box"
+            item="item"
+            on-select="selectBox"
+            ng-class="{'selected': selected[0].item.name == item.name}"
+          ></box>
+        </div>
+      </div>
+    </div>
+    <div
+      class="fullscreen-background top-up"
+      ng-show="selected.length"
+      ng-style="{'background-image': 'url(' + selected[0].item.image + ')'}"
+    ></div>
+    <div class="scroller" ng-show="selected.length">
+      <a class="close-button" ng-click="clearSelection()">
+        <i class="material-icons">close</i>
+      </a>
+      <h1>{{selected[0].item.name}}</h1>
+      <div
+        big-box
+        ng-repeat="item in selected"
+        class="box on-top"
+        position="item.position"
+        selected="item.item"
+      >
+        <img ng-src="{{item.item.image}}" alt="" />
+        <div class="content">
+          <h2>My Journey</h2>
+          <p>{{selected[0].item.description}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-animate.min.js"></script>
+
+  <script>
+    var app = angular.module("app", ["ngAnimate"]);
+
+    app.controller("mainCtrl", function ($scope) {
+      $scope.boxes = [
+        {
+          name: "Japan",
+          image:
+            "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/26/97/39/7f/caption.jpg?w=1200&h=-1&s=1&cx=1920&cy=1080&chk=v1_f31158e4bb953d28a308",
+          title: "Journey In Japan",
+          description:
+            "A journey in Japan can be a truly incredible experience. Japan is a country that is rich in culture, history, and natural beauty. From the bustling city of Tokyo to the serene beauty of the countryside, there is so much to explore and discover.One of the first things to consider when planning a journey in Japan is the time of year. Japan experiences four distinct seasons, each with its own unique charm. Spring (March to May) is the season of cherry blossoms and is a popular time to visit Japan. Summer (June to August) is hot and humid, but it's a great time to visit the beaches and enjoy summer festivals. Autumn (September to November) is a beautiful time to see the fall colors, and winter (December to February) is a great time for winter sports and to enjoy the snow festivals.Tokyo is a must-see city for any journey in Japan. It's a city that is constantly buzzing with energy and excitement. You can visit the famous Tokyo Tower, explore the Tsukiji Fish Market, and wander through the Meiji Shrine. There are also plenty of opportunities to shop, eat, and experience the unique culture of Japan.Another popular destination in Japan is Kyoto. This city is known for its beautiful temples and shrines, traditional architecture, and cultural events. Some of the must-see attractions in Kyoto include the Kiyomizu-dera Temple, the Fushimi Inari Shrine, and the Gion district, where you can see geisha performers.For those who love the outdoors, a journey to Hokkaido is a great option. This island is known for its natural beauty and outdoor activities, such as skiing, snowboarding, and hiking. The hot springs, or onsen, in Hokkaido are also a great way to relax and experience Japanese culture.In conclusion, a journey in Japan is an unforgettable experience. From the bustling city of Tokyo to the serene beauty of the countryside, there is something for everyone in Japan. Whether you're interested in history, culture, or outdoor activities, Japan has it all.",
+        },
+        {
+          name: "South Korea",
+          image:
+            "https://a.cdn-hotels.com/gdcs/production125/d653/a01517ea-0ec0-4639-b862-33922c62f04a.jpg?impolicy=fcrop&w=800&h=533&q=medium",
+          title: "Journey In Korea",
+          description:
+            "A journey in Korea is a unique experience that offers a blend of modernity and traditional culture. Korea is a country with a rich history, vibrant cities, and stunning natural landscapes. From the bustling streets of Seoul to the serene beauty of Jeju Island, there is something for everyone in Korea.Seoul, the capital city of Korea, is a must-visit destination for any journey in Korea. It's a city that is constantly evolving, with modern skyscrapers and cutting-edge technology alongside ancient palaces and temples. Some of the must-see attractions in Seoul include Gyeongbokgung Palace, Namsan Tower, and Myeong-dong shopping district.Another popular destination in Korea is Jeju Island, a volcanic island located off the southern coast. This island is known for its stunning natural beauty, including waterfalls, lava tubes, and hiking trails. You can also visit the UNESCO World Heritage site Jeju Volcanic Island and Lava Tubes, which offer a unique geological landscape.For those interested in history and culture, a journey to the ancient city of Gyeongju is a great option. This city was once the capital of the ancient kingdom of Silla and is now a UNESCO World Heritage site. Some of the must-see attractions in Gyeongju include the Bulguksa Temple, Seokguram Grotto, and Cheomseongdae Observatory.Food is also an important part of any journey in Korea. Korean cuisine is known for its bold flavors and unique ingredients. Some of the must-try dishes include kimchi, bibimbap, and Korean barbecue.In conclusion, a journey in Korea is a fascinating experience that offers a blend of modernity and tradition. From the bustling streets of Seoul to the serene beauty of Jeju Island, there is something for everyone in Korea. Whether you're interested in history, culture, or food, Korea has it all.",
+        },
+        {
+          name: "Australia",
+          image:
+            "https://media.cnn.com/api/v1/images/stellar/prod/191011110307-02-australia-beautiful-places.jpg?q=w_2187,h_1230,x_0,y_0,c_fill/w_1280",
+          title: "Journey In Australia",
+          description:
+            "Australia is a vast and diverse country that offers visitors a wide range of experiences, from exploring the rugged outback to relaxing on the beautiful beaches. Some highlights of a journey to Australia might include:Exploring the cities - Australia has several vibrant cities, including Sydney, Melbourne, Brisbane, Perth, and Adelaide. Each city has its own unique charm and attractions, from the iconic landmarks of Sydney to the trendy cafes of Melbourne.Experiencing the wildlife - Australia is home to some of the world's most unique and fascinating wildlife, including kangaroos, koalas, wallabies, and many species of birds and marine life. There are many opportunities to see these animals up close, such as visiting wildlife parks, sanctuaries, and zoos.Discovering the natural wonders - Australia is known for its stunning natural landscapes, such as the Great Barrier Reef, Uluru (Ayers Rock), the Daintree Rainforest, and the Blue Mountains. Hiking, snorkeling, and scenic drives are just a few of the ways to experience these breathtaking natural wonders.Learning about Indigenous culture - Australia has a rich and diverse Indigenous culture that spans thousands of years. There are many opportunities to learn about and experience this culture, such as visiting museums and art galleries, attending cultural events, and participating in cultural tours.Enjoying the food and wine - Australia is famous for its fresh and flavorful cuisine, from seafood to barbecue to multicultural cuisine. The country is also known for its world-class wine regions, such as the Barossa Valley, Margaret River, and Hunter Valley.",
+        },
+        {
+          name: "Croatia",
+          image:
+            "https://travellersworldwide.com/wp-content/uploads/2022/12/Shutterstock_1935292256.jpg.webp",
+          title: "Journey In Croatia",
+          description:
+            "Croatia is a beautiful country that offers visitors a unique blend of history, culture, and natural beauty. Here are some highlights of a journey to Croatia:Explore the cities - Croatia has several cities that offer a glimpse into its rich history and culture. Dubrovnik, Split, and Zagreb are some of the most popular destinations, each with its own unique character and attractions.Discover the islands - Croatia is famous for its picturesque islands, with over 1,000 scattered along its coastline. Hvar, Brac, and Korcula are some of the most popular destinations, offering stunning beaches, crystal-clear waters, and charming coastal towns.Experience the natural beauty - Croatia has several national parks that showcase its breathtaking natural beauty. Plitvice Lakes National Park, Krka National Park, and Paklenica National Park are just a few of the most popular destinations, offering hiking trails, waterfalls, and stunning landscapes.Enjoy the food and wine - Croatia has a rich culinary tradition, with fresh seafood, Mediterranean-inspired cuisine, and local wines. The coastal regions are famous for their seafood, while the interior is known for its hearty stews and roasted meats.Learn about the history and culture - Croatia has a rich history that dates back to ancient times, with influences from the Romans, Venetians, Ottomans, and Austro-Hungarians. Visitors can learn about this history by visiting museums, historic sites, and cultural events.An itinerary for a journey to Croatia can be customized to suit your interests and preferences, whether you prefer history, culture, natural beauty, or cuisine. With its friendly locals, stunning landscapes, and rich history and culture, a journey to Croatia can be an unforgettable experience.",
+        },
+        {
+          name: "Germany",
+          image:
+            "https://www.reflectionsenroute.com/wp-content/uploads/2018/05/Freiburg-Germany-summer-Ali-Garland-1024x682.jpg.webp",
+          title: "Journey In Germany",
+          description:
+            "Germany is a beautiful country with a rich history, culture, and natural beauty. Here are some highlights of a journey to Germany:Explore the cities - Germany has several cities that offer a mix of history, culture, and modernity. Berlin, Munich, Hamburg, and Cologne are some of the most popular destinations, each with its own unique character and attractions.Discover the castles - Germany is famous for its picturesque castles, with over 20,000 dotted across the country. Neuschwanstein, Heidelberg, and Linderhof are just a few of the most popular destinations, offering stunning architecture and beautiful landscapes.Experience the natural beauty - Germany has several national parks that showcase its stunning natural beauty. The Black Forest, Bavarian Alps, and Saxon Switzerland are just a few of the most popular destinations, offering hiking trails, scenic drives, and breathtaking landscapes.Enjoy the food and drink - Germany has a rich culinary tradition, with hearty stews, sausages, and beer being some of its most famous dishes. Visitors can also enjoy local wines, cheeses, and pastries, as well as international cuisine in the cities.Learn about the history and culture - Germany has a rich history that spans thousands of years, with influences from the Romans, Celts, and medieval empires. Visitors can learn about this history by visiting museums, historic sites, and cultural events.An itinerary for a journey to Germany can be customized to suit your interests and preferences, whether you prefer history, culture, natural beauty, or cuisine. With its friendly locals, stunning landscapes, and rich history and culture, a journey to Germany can be an unforgettable experience.",
+        },
+        {
+          name: "London",
+          image:
+            "https://www.telegraph.co.uk/content/dam/travel/2022/05/19/TELEMMGLPICT000296533169_trans_NvBQzQNjv4BqpVlberWd9EgFPZtcLiMQf0Rf_Wk3V23H2268P_XkPxc.jpeg",
+          title: "Journey In London",
+          description:
+            "London is a vibrant and diverse city with a rich history, culture, and entertainment scene. Here are some highlights of a journey to London:Explore the landmarks - London is home to several iconic landmarks that are recognized worldwide. Big Ben, the Tower Bridge, Buckingham Palace, and the London Eye are just a few of the most popular destinations, offering stunning architecture and historical significance.Visit the museums - London has some of the world's most famous museums, such as the British Museum, the National Gallery, and the Tate Modern. These museums showcase a diverse range of art, history, and culture, and are a must-visit for any visitor.Enjoy the food and drink - London has a thriving culinary scene, with a diverse range of cuisines and styles on offer. From traditional English pub fare to Michelin-starred restaurants, visitors can enjoy a wide range of food and drink options in the city.Experience the entertainment - London is famous for its West End theaters, offering world-class musicals, plays, and performances. The city also hosts several music festivals, sporting events, and cultural festivals throughout the year.Explore the neighborhoods - London is a diverse city with several distinct neighborhoods, each with its own character and attractions. Camden, Soho, Notting Hill, and Shoreditch are just a few of the most popular destinations, offering a mix of history, culture, and entertainment.An itinerary for a journey to London can be customized to suit your interests and preferences, whether you prefer history, culture, entertainment, or cuisine. With its friendly locals, stunning landmarks, and rich history and culture, a journey to London can be an unforgettable experience.",
+        },
+      ];
+
+      $scope.selected = [];
+      $scope.selectBox = function (item, position) {
+        $scope.selected = [
+          {
+            item: item,
+            position: position,
+          },
+        ];
+        $scope.$apply();
+      };
+      $scope.clearSelection = function () {
+        $scope.selected = [];
+      };
+    });
+
+    app.directive("box", function () {
+      return {
+        restrict: "E",
+        scope: {},
+        bindToController: {
+          onSelect: "=",
+          item: "=",
+        },
+        controllerAs: "box",
+        controller: function () {
+          var box = this;
+
+          box.goFullscreen = function (e) {
+            box.onSelect(box.item, e.target.getBoundingClientRect());
+          };
+        },
+        link: function (scope, element) {
+          //this to change text in the box onclick (must add this)
+          element.bind("click", scope.box.goFullscreen);
+          element.css({
+            "background-image": "url(" + scope.box.item.image + ")",
+          });
+          element.html(
+            '<div class="box-overlay"><h2>' +
+              scope.box.item.title +
+              "</h2><button>Learn More</button></div>"
+          );
+        },
+      };
+    });
+
+    app.directive("bigBox", function ($timeout) {
+      return {
+        restrict: "AE",
+        scope: {},
+        bindToController: {
+          position: "=",
+          selected: "=",
+          onSelect: "=",
+        },
+        controllerAs: "box",
+        controller: function () {
+          var box = this;
+        },
+        link: function (scope, element) {
+          var css = {};
+          for (var key in scope.box.position) {
+            css[key] = scope.box.position[key] + "px";
+          }
+
+          element.css(css);
+
+          $timeout(function () {
+            element.css({
+              top: "50%",
+              left: "10%",
+            });
+            //element.addClass('image-out');
+          }, 200);
+          $timeout(function () {
+            element.addClass("image-out");
+          }, 600);
+
+          $timeout(function () {
+            element.css({
+              width: "80%",
+              height: "60%",
+            });
+          }, 500);
+
+          $timeout(function () {
+            element.addClass("show");
+          }, 1000);
+        },
+      };
+    });
+  </script>
+</html>
